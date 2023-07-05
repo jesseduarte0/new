@@ -26,7 +26,6 @@ import toastError from "../../errors/toastError";
 const useStyles = makeStyles(theme => ({
 	ticket: {
 		position: "relative",
-		height: "90px"
 	},
 
 	pendingTicket: {
@@ -88,10 +87,8 @@ const useStyles = makeStyles(theme => ({
 	},
 
 	acceptButton: {
-		flexDirection: "row",
-		flex:1,
-		alignItems:'flex-start',
-		marginRight: 10
+		position: "absolute",
+		left: "50%",
 	},
 
 	ticketQueueColor: {
@@ -139,22 +136,6 @@ const TicketListItem = ({ ticket }) => {
 			await api.put(`/tickets/${id}`, {
 				status: "open",
 				userId: user?.id,
-			});
-		} catch (err) {
-			setLoading(false);
-			toastError(err);
-		}
-		if (isMounted.current) {
-			setLoading(false);
-		}
-		history.push(`/tickets/${id}`);
-	};
-
-	const handleViewTicket = async id => {
-		setLoading(true);
-		try {
-			await api.put(`/tickets/${id}`, {
-				status: "pending",
 			});
 		} catch (err) {
 			setLoading(false);
@@ -271,18 +252,6 @@ const TicketListItem = ({ ticket }) => {
 						onClick={e => handleAcepptTicket(ticket.id)}
 					>
 						{i18n.t("ticketsList.buttons.accept")}
-					</ButtonWithSpinner>
-				)}
-				{ticket.status === "pending" && (
-					<ButtonWithSpinner
-						color="primary"
-						variant="contained"
-						className={classes.acceptButton}
-						size="small"
-						loading={loading}
-						onClick={e => handleViewTicket(ticket.id)}
-					>
-						{i18n.t("ticketsList.buttons.view")}
 					</ButtonWithSpinner>
 				)}
 			</ListItem>

@@ -57,7 +57,6 @@ const useStyles = makeStyles(theme => ({
 		display: "flex",
 		alignItems: "center",
 		padding: theme.spacing(8, 8, 3),
-		backgroundColor: theme.palette.background.default
 	},
 
 	paper: {
@@ -117,73 +116,37 @@ const ZDG = () => {
 		setInputs(values => ({...values, [name]: value}))
 	  }
 	
-	const handleSubmit = async (event) => {
+	const handleSubmit = (event) => {
 		event.preventDefault();
-		alert('As mensagens estão sendo carregadas! Esta página deve ficar aberta enquanto os disparos são realizados. Aguarde...');
+		alert('As mensagens estão sendo carregadas! Aguarde...');
 		const usersTextArea = inputs.user.split('\n');
 		const token = settings && settings.length > 0 && getSettingValue("userApiToken");
-		const timer = ms => new Promise(res => setTimeout(res, ms))
-		function randomIntFromInterval(min, max) {
-			return Math.floor(Math.random() * (max - min + 1) + min)
-		}
-		for (const user of usersTextArea){
-			const rndInt = randomIntFromInterval(inputs.min, inputs.max)
+		usersTextArea.forEach((user) => {
 			const numberDDI = user.substring(0, 2);
-			const numberDDD = user.substring(2, 4);
-			await timer(rndInt * 1000)
-			if (numberDDI !== "55") {
+			const numberDDD = user.substring(2, 4);			
+			//setTimeout(function() {
+				if (numberDDI !== "55") {
+				setTimeout(function() {
 				ZDGSender(user, inputs.message, inputs.id, token);
-				await timer(rndInt * 1000)
 				alert('Mensagem enviada para o número DDI: ' + user);
-			}
-			else if (numberDDI === "55" && parseInt(numberDDD) <= 30) {
+				},5000 + Math.floor(Math.random() * 3000))
+				}
+				else if (numberDDI === "55" && parseInt(numberDDD) <= 30) {
+				setTimeout(function() {
 				const numberUser = user.substr(-8,8);
-				await timer(rndInt * 1000)
 				ZDGSender(numberDDI.toString() + numberDDD.toString() + "9" + numberUser.toString(), inputs.message, inputs.id, token);
-				alert('Mensagem enviada para o número: ' + numberDDI.toString() + numberDDD.toString() + "9" + numberUser.toString());
-			}
-			else if (numberDDI === "55" && parseInt(numberDDD) > 30) {
+				alert('Mensagem enviada para o número com 9: ' + numberDDI.toString() + numberDDD.toString() + "9" + numberUser.toString());
+				},5000 + Math.floor(Math.random() * 3000))  
+				}
+				else if (numberDDI === "55" && parseInt(numberDDD) > 30) {
+				setTimeout(function() {
 				const numberUser = user.substr(-8,8);
-				await timer(rndInt * 1000)
 				ZDGSender(numberDDI.toString() + numberDDD.toString() + numberUser.toString(), inputs.message, inputs.id, token);
-				alert('Mensagem enviada para o número: ' + numberDDI.toString() + numberDDD.toString() + numberUser.toString());
-			}
-			// ZDGSender(user, inputs.message, inputs.id, token);
-			// alert(rndInt + ' Mensagem enviada para o número DDI: ' + user);
-		}
-
-		// usersTextArea.forEach(async (user) => {
-		// 	const numberDDI = user.substring(0, 2);
-		// 	const numberDDD = user.substring(2, 4);
-		// 	const rndInt = randomIntFromInterval(1, 6)
-		// 	console.log(rndInt)		
-			
-		// 	setTimeout(function() {
-		// 		if (numberDDI !== "55") {
-		// 		setTimeout(function() {
-		// 		ZDGSender(user, inputs.message, inputs.id, token);
-		// 		await timer(rndInt * 1000)
-		// 		alert(rndInt + 'Mensagem enviada para o número DDI: ' + user);
-		// 		},5000 + Math.floor(Math.random() * 3000))
-		// 		}
-		// 		else if (numberDDI === "55" && parseInt(numberDDD) <= 30) {
-		// 		setTimeout(function() {
-		// 		const numberUser = user.substr(-8,8);
-		// 		await timer(rndInt * 1000)
-		// 		ZDGSender(numberDDI.toString() + numberDDD.toString() + "9" + numberUser.toString(), inputs.message, inputs.id, token);
-		// 		alert(rndInt + 'Mensagem enviada para o número com 9: ' + numberDDI.toString() + numberDDD.toString() + "9" + numberUser.toString());
-		// 		},5000 + Math.floor(Math.random() * 3000))  
-		// 		}
-		// 		else if (numberDDI === "55" && parseInt(numberDDD) > 30) {
-		// 		setTimeout(function() {
-		// 		const numberUser = user.substr(-8,8);
-		// 		await timer(rndInt * 1000)
-		// 		ZDGSender(numberDDI.toString() + numberDDD.toString() + numberUser.toString(), inputs.message, inputs.id, token);
-		// 		alert(rndInt + 'Mensagem enviada para o número sem 9: ' + numberDDI.toString() + numberDDD.toString() + numberUser.toString());
-		// 		},5000 + Math.floor(Math.random() * 3000)) 
-		// 		}
-		// 	},5000 + Math.floor(Math.random() * 10000))            
-		// });
+				alert('Mensagem enviada para o número sem 9: ' + numberDDI.toString() + numberDDD.toString() + numberUser.toString());
+				},5000 + Math.floor(Math.random() * 3000)) 
+				}
+			//},5000 + Math.floor(Math.random() * 10000))            
+		  });
 	}
 	
 	useEffect(() => {
@@ -214,7 +177,7 @@ const ZDG = () => {
 					name="user" 
 					value={inputs.user || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					multiline
 					margin="dense"
@@ -229,7 +192,7 @@ const ZDG = () => {
 					name="message" 
 					value={inputs.message || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					multiline
 					margin="dense"
@@ -244,31 +207,7 @@ const ZDG = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
-					fullWidth
-					margin="dense"
-				/>
-				</Paper>
-				<Paper className={classes.paper}>
-				<TextField style={{marginRight: 5}}
-					id="outlined-basic" 
-					label="Intervalo minímo (Segundos)" 
-					variant="outlined" 
-					name="min" 
-					value={inputs.min || ""} 
-					onChange={handleChange}
-					required
-					fullWidth
-					margin="dense"
-				/>
-				<TextField style={{marginLeft: 5}}
-					id="outlined-basic" 
-					label="Intervalo máximo (Segundos)" 
-					variant="outlined" 
-					name="max" 
-					value={inputs.max || ""} 
-					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>

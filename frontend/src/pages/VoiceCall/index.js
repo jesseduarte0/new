@@ -41,8 +41,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		display: "flex",
 		alignItems: "center",
-		padding: theme.spacing(4),
-		backgroundColor: theme.palette.background.default,
+		padding: theme.spacing(4)
 	},
 
 	paper: {
@@ -145,7 +144,7 @@ const VoiceCall = () => {
 					name="user" 
 					value={inputs.user || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					multiline
 					margin="dense"
@@ -160,7 +159,7 @@ const VoiceCall = () => {
 					name="message" 
 					value={inputs.message || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					multiline
 					margin="dense"
@@ -175,7 +174,7 @@ const VoiceCall = () => {
 					name="from" 
 					value={inputs.from || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 					placeholder="Pedrinho da NASA"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
@@ -23,38 +23,6 @@ import api from "../../services/api";
 import ButtonWithSpinner from "../ButtonWithSpinner";
 import toastError from "../../errors/toastError";
 import useQueues from "../../hooks/useQueues";
-import useWhatsApps from "../../hooks/useWhatsApps";
-import { AuthContext } from "../../context/Auth/AuthContext";
-import { Can } from "../Can";
-
-const http = require('https');
-
-const init = {
-  host: process.env.REACT_APP_BACKEND_URL.split("//")[1],
-  path: '/zdg',
-  method: 'POST',
-  headers: {
-    'content-type': 'application/json; charset=utf-8'
-  }
-};
-
-const callback = function(response) {
-  let result = Buffer.alloc(0);
-  response.on('data', function(chunk) {
-    result = Buffer.concat([result, chunk]);
-  });
-  
-  response.on('end', function() {
-    console.log(result.toString());
-  });
-};
-
-async function ZDGSender(number, message, iD, token) {
-	const req = http.request(init, callback);
-	const body = '{"number":"'+ number + '@c.us","message":"' + message.replace(/\n/g, "\\n") + '","token":"' + token + '","ticketwhatsappId":' + iD + '}';
-	await req.write(body);
-	req.end();
-}
 
 const useStyles = makeStyles((theme) => ({
   maxWidth: {
@@ -66,7 +34,7 @@ const filterOptions = createFilterOptions({
 	trim: true,
 });
 
-const TransferTicketModal = ({ modalOpen, onClose, ticketid, ticketWhatsappId }) => {
+const TransferTicketModal = ({ modalOpen, onClose, ticketid }) => {
 	const history = useHistory();
 	const [options, setOptions] = useState([]);
 	const [queues, setQueues] = useState([]);
@@ -75,32 +43,8 @@ const TransferTicketModal = ({ modalOpen, onClose, ticketid, ticketWhatsappId })
 	const [searchParam, setSearchParam] = useState("");
 	const [selectedUser, setSelectedUser] = useState(null);
 	const [selectedQueue, setSelectedQueue] = useState('');
-	const [selectedWhatsapp, setSelectedWhatsapp] = useState(ticketWhatsappId);
 	const classes = useStyles();
 	const { findAll: findAllQueues } = useQueues();
-	const { loadingWhatsapps, whatsApps } = useWhatsApps();
-	const [settings, setSettings] = useState([]);
-
-	useEffect(() => {
-		const fetchSession = async () => {
-			try {
-				const { data } = await api.get("/settings");
-				setSettings(data);
-			} catch (err) {
-				toastError(err);
-			}
-		};
-		fetchSession();
-	}, []);
-
-	const getSettingValue = key => {
-		const { value } = settings.find(s => s.key === key);
-		return value;
-	};
-
-	const token = settings && settings.length > 0 && getSettingValue("userApiToken");
-
-	const { user: loggedInUser } = useContext(AuthContext);
 
 	useEffect(() => {
 		const loadQueues = async () => {
@@ -111,15 +55,6 @@ const TransferTicketModal = ({ modalOpen, onClose, ticketid, ticketWhatsappId })
 		loadQueues();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
-
-	
-	async function fetchSender(user, queue) {
-		try {
-		  const { data } = await api.get("/tickets/" + ticketid);
-		  ZDGSender(data.contact.number, '➡️ Sua mensagem foi transferiada para o setor: *' + queue + '*\n\n➡️ Você será atendido por: *'+ user + '*', ticketWhatsappId, token); 
-		} catch (err) {
-		}
-	  }
 
 	useEffect(() => {
 		if (!modalOpen || searchParam.length < 3) {
@@ -135,12 +70,12 @@ const TransferTicketModal = ({ modalOpen, onClose, ticketid, ticketWhatsappId })
 					});
 					setOptions(data.users);
 					setLoading(false);
-					
 				} catch (err) {
 					setLoading(false);
 					toastError(err);
 				}
 			};
+
 			fetchUsers();
 		}, 500);
 		return () => clearTimeout(delayDebounceFn);
@@ -172,14 +107,8 @@ const TransferTicketModal = ({ modalOpen, onClose, ticketid, ticketWhatsappId })
 				}
 			}
 
-			if(selectedWhatsapp) {
-				data.whatsappId = selectedWhatsapp;
-			}
 			await api.put(`/tickets/${ticketid}`, data);
-			try{
-				const { data } = await api.get("/queue/"+ selectedQueue);
-				fetchSender(selectedUser.name, data.name)
-			} catch(e){}
+
 			setLoading(false);
 			history.push(`/tickets`);
 		} catch (err) {
@@ -248,24 +177,6 @@ const TransferTicketModal = ({ modalOpen, onClose, ticketid, ticketWhatsappId })
 							))}
 						</Select>
 					</FormControl>
-					<Can
-						role={loggedInUser.profile}
-						perform="ticket-options:transferWhatsapp"
-						yes={() => (!loadingWhatsapps && 
-							<FormControl variant="outlined" className={classes.maxWidth} style={{ marginTop: 20 }}>
-								<InputLabel>{i18n.t("transferTicketModal.fieldConnectionLabel")}</InputLabel>
-								<Select
-									value={selectedWhatsapp}
-									onChange={(e) => setSelectedWhatsapp(e.target.value)}
-									label={i18n.t("transferTicketModal.fieldConnectionPlaceholder")}
-								>
-									{whatsApps.map((whasapp) => (
-										<MenuItem key={whasapp.id} value={whasapp.id}>{whasapp.name}</MenuItem>
-									))}
-								</Select>
-							</FormControl>
-						)}
-					/>
 				</DialogContent>
 				<DialogActions>
 					<Button

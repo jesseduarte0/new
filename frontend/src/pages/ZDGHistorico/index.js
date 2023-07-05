@@ -57,8 +57,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		display: "flex",
 		alignItems: "center",
-		padding: theme.spacing(4),
-		backgroundColor: theme.palette.background.default,
+		padding: theme.spacing(4)
 	},
 
 	paper: {
@@ -149,7 +148,7 @@ const ZDGHistorico = () => {
 					name="limite" 
 					value={inputs.limite || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 					placeholder="Quantidade de mensagens por conversa"
@@ -164,7 +163,7 @@ const ZDGHistorico = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>
@@ -173,7 +172,7 @@ const ZDGHistorico = () => {
 				Mostrar ID de Disparo
 				</Button>
 				<Button variant="contained" color="secondary" className={classes.button} type="submit">
-				IMPORTAR MENSAGENS
+				IMOPRTAR MENSAGENS
 				</Button>
 			</form>
 			</Container>

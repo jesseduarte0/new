@@ -266,7 +266,6 @@ const messages = {
           "No se encontraron tickets con este estado o término de búsqueda",
         buttons: {
           accept: "Acceptar",
-          view: "Espiar",
         },
       },
       newTicketModal: {
@@ -289,17 +288,6 @@ const messages = {
           administration: "Administración",
           users: "Usuarios",
           settings: "Configuración",
-          ZDG: "Enviar mensaje",
-          ZDGMedia: "URL de medios",
-          ZDGMedia2: "Ruta de medios",
-          ZDGMedia3: "audio grabado",
-          ZDGGroups: "Grupos",
-          Direct: "Direct IG",
-          SMS: "SMS",
-          VoiceCall: "Llamada telefonica",
-          ZDGChatbot: "Chatbot",
-          ZDGAgendamento: "Programado",
-          ZDGHistorico: "Histórico"
         },
         appBar: {
           user: {

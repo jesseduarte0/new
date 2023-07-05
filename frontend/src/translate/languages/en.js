@@ -284,17 +284,6 @@ const messages = {
           administration: "Administration",
           users: "Users",
           settings: "Settings",
-          ZDG: "Send Message",
-          ZDGMedia: "Media URL",
-          ZDGMedia2: "Media Path",
-          ZDGMedia3: "Recorded Audio",
-          ZDGGroups: "Groups",
-          Direct: "Direct IG",
-          SMS: "SMS",
-          VoiceCall: "Phone call",
-          ZDGChatbot: "Chatbot",
-          ZDGAgendamento: "Scheduled",
-          ZDGHistorico: "Historic"
         },
         appBar: {
           user: {
@@ -386,7 +375,6 @@ const messages = {
             resolve: "Resolve",
             reopen: "Reopen",
             accept: "Accept",
-            view: "Spy",
           },
         },
       },

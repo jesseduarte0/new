@@ -166,7 +166,6 @@ const useStyles = makeStyles(theme => ({
 		flexGrow: 1,
 		width: '100%',
 		alignItems: "center",
-		backgroundColor: theme.palette.background.default,
 	},
 
 	container: {
@@ -198,10 +197,6 @@ const useStyles = makeStyles(theme => ({
 		marginBottom: 12,
 		marginRight: 100,
 		marginLeft: 100,
-	},
-
-	appbar: {
-		background: theme.palette.background.default,
 	},
 
 	button: {
@@ -391,7 +386,7 @@ const ZDGGroups = () => {
 			</Button>
 			</Paper>
 		</Container>
-		<AppBar position="static" className={classes.appbar}>
+		<AppBar position="static" color="default">
 		<Tabs
 			value={value}
 			onChange={handleChange2}
@@ -422,7 +417,7 @@ const ZDGGroups = () => {
 					name="titulo" 
 					value={inputs.titulo || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 					placeholder="Novo título para os grupos"
@@ -436,7 +431,7 @@ const ZDGGroups = () => {
 					name="descricao" 
 					value={inputs.descricao || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 					placeholder="Nova descrição para os grupos"
@@ -450,7 +445,7 @@ const ZDGGroups = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>
@@ -476,7 +471,7 @@ const ZDGGroups = () => {
 					name="tituloNovo" 
 					value={inputs.tituloNovo || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth					
 					margin="dense"
 					placeholder="Título para o novo grupo"
@@ -490,7 +485,7 @@ const ZDGGroups = () => {
 					name="contatoGrupo" 
 					value={inputs.contatoGrupo || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth					
 					margin="dense"
 					placeholder="Título para o novo grupo"
@@ -504,7 +499,7 @@ const ZDGGroups = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>
@@ -530,7 +525,7 @@ const ZDGGroups = () => {
 					name="abrirGrupo" 
 					value={inputs.abrirGrupo || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth					
 					margin="dense"
 					placeholder="Escreva ABRIR para abrir seus GRUPOS"
@@ -544,7 +539,7 @@ const ZDGGroups = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>
@@ -570,7 +565,7 @@ const ZDGGroups = () => {
 					name="fecharGrupo" 
 					value={inputs.fecharGrupo || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth					
 					margin="dense"
 					placeholder="Escreva FECHAR para abrir seus GRUPOS"
@@ -584,7 +579,7 @@ const ZDGGroups = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>
@@ -610,7 +605,7 @@ const ZDGGroups = () => {
 					name="mensagemGrupo" 
 					value={inputs.mensagemGrupo || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth	
 					multiline				
 					margin="dense"
@@ -625,7 +620,7 @@ const ZDGGroups = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>
@@ -654,7 +649,7 @@ const ZDGGroups = () => {
 					name="mensagemGrupoNASA" 
 					value={inputs.mensagemGrupoNASA || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth	
 					multiline				
 					margin="dense"
@@ -669,7 +664,7 @@ const ZDGGroups = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>

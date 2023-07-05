@@ -21,26 +21,17 @@ import TextsmsIcon from '@material-ui/icons/Textsms';
 import PhoneInTalkIcon from '@material-ui/icons/PhoneInTalk';
 import BurstModeIcon from '@material-ui/icons/BurstMode';
 import InstagramIcon from '@material-ui/icons/Instagram';
-//import ChatIcon from '@material-ui/icons/Chat';
-//import ScheduleIcon from '@material-ui/icons/Schedule';
+// import ChatIcon from '@material-ui/icons/Chat';
+import ScheduleIcon from '@material-ui/icons/Schedule';
 import SubjectIcon from '@material-ui/icons/Subject';
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 
 import { i18n } from "../translate/i18n";
 import { WhatsAppsContext } from "../context/WhatsApp/WhatsAppsContext";
 import { AuthContext } from "../context/Auth/AuthContext";
 import { Can } from "../components/Can";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles(theme => ({
-	icon: {
-		color: theme.palette.primary.main
-	},
-}));
 
 function ListItemLink(props) {
   const { icon, primary, to, className } = props;
-  const classes = useStyles();
 
   const renderLink = React.useMemo(
     () =>
@@ -53,7 +44,7 @@ function ListItemLink(props) {
   return (
     <li>
       <ListItem button component={renderLink} className={className}>
-        {icon ? <ListItemIcon className={classes.icon}>{icon}</ListItemIcon> : null}
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
         <ListItemText primary={primary} />
       </ListItem>
     </li>
@@ -61,7 +52,6 @@ function ListItemLink(props) {
 }
 
 const MainListItems = (props) => {
-  
   const { drawerClose } = props;
   const { whatsApps } = useContext(WhatsAppsContext);
   const { user } = useContext(AuthContext);
@@ -126,11 +116,11 @@ const MainListItems = (props) => {
               primary={i18n.t("mainDrawer.listItems.ZDGChatbot")}
         icon={<ChatIcon />}
       /> */}
-      {/* <ListItemLink
+      <ListItemLink
               to="/ZDGAgendamento"
               primary={i18n.t("mainDrawer.listItems.ZDGAgendamento")}
               icon={<ScheduleIcon />}
-      /> */}
+      />
       <ListItemLink
               to="/ZDGHistorico"
               primary={i18n.t("mainDrawer.listItems.ZDGHistorico")}
@@ -145,16 +135,6 @@ const MainListItems = (props) => {
               to="/ZDGMedia"
               primary={i18n.t("mainDrawer.listItems.ZDGMedia")}
               icon={<BurstModeIcon />}
-      />
-      <ListItemLink
-              to="/ZDGMedia2"
-              primary={i18n.t("mainDrawer.listItems.ZDGMedia2")}
-              icon={<BurstModeIcon />}
-      />
-      <ListItemLink
-              to="/ZDGMedia3"
-              primary={i18n.t("mainDrawer.listItems.ZDGMedia3")}
-              icon={<RecordVoiceOverIcon />}
       />
       <ListItemLink
               to="/ZDGGroups"

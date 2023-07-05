@@ -66,9 +66,6 @@ const useStyles = makeStyles(theme => ({
 	buttonProgress: {
 		color: green[500],
 	},
-	icon: {
-		color: theme.palette.primary.main
-	},
 }));
 
 const CustomToolTip = ({ title, content, children }) => {
@@ -378,14 +375,14 @@ const Connections = () => {
 												)}
 											</TableCell>
 											<TableCell align="center">
-												<IconButton className={classes.icon}
+												<IconButton
 													size="small"
 													onClick={() => handleEditWhatsApp(whatsApp)}
 												>
 													<Edit />
 												</IconButton>
 
-												<IconButton className={classes.icon}
+												<IconButton
 													size="small"
 													onClick={e => {
 														handleOpenConfirmationModal("delete", whatsApp.id);

@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
-import brLocale from 'date-fns/locale/fr';
+import frLocale from 'date-fns/locale/fr';
 import moment from "moment";
 
 const http = require('https');
@@ -61,8 +61,7 @@ const useStyles = makeStyles(theme => ({
 	root: {
 		display: "flex",
 		alignItems: "center",
-		padding: theme.spacing(4),
-		backgroundColor: theme.palette.background.default,
+		padding: theme.spacing(4)
 	},
 
 	paper: {
@@ -151,7 +150,7 @@ const ZDG = () => {
 			</Paper>
 			<form onSubmit={handleSubmit}>
 				<Paper className={classes.paper}>
-				<LocalizationProvider dateAdapter={AdapterDateFns} locale={brLocale}>
+				<LocalizationProvider dateAdapter={AdapterDateFns} locale={frLocale}>
 				<DatePicker
 					label="Data de Envio"
 					name="dataEnvio" 
@@ -171,7 +170,7 @@ const ZDG = () => {
 					name="id" 
 					value={inputs.id || ""} 
 					onChange={handleChange}
-					required
+					required="required"
 					fullWidth
 					margin="dense"
 				/>

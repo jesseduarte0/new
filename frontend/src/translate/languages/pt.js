@@ -36,7 +36,7 @@ const messages = {
       dashboard: {
         charts: {
           perDay: {
-            title: "Tickets de hoje: ",
+            title: "Tickets today: ",
           },
         },
         messages: {
@@ -52,9 +52,9 @@ const messages = {
         }
       },
       connections: {
-        title: "Conexões do Dispositivo",
+        title: "Conexões do WhatsApp",
         toasts: {
-          deleted: "Conexão com o Dispositivo excluída com sucesso!",
+          deleted: "Conexão com o WhatsApp excluída com sucesso!",
         },
         confirmationModal: {
           deleteTitle: "Deletar",
@@ -64,7 +64,7 @@ const messages = {
             "Tem certeza? Você precisará ler o QR Code novamente.",
         },
         buttons: {
-          add: "Adicionar Dispositivo",
+          add: "Adicionar WhatsApp",
           disconnect: "desconectar",
           tryAgain: "Tentar novamente",
           qrcode: "QR CODE",
@@ -73,7 +73,7 @@ const messages = {
         },
         toolTips: {
           disconnected: {
-            title: "Falha ao iniciar sessão do Dispositivo",
+            title: "Falha ao iniciar sessão do WhatsApp",
             content:
               "Certifique-se de que seu celular esteja conectado à internet e tente novamente, ou solicite um novo QR Code",
           },
@@ -88,7 +88,7 @@ const messages = {
           timeout: {
             title: "A conexão com o celular foi perdida",
             content:
-              "Certifique-se de que seu celular esteja conectado à internet e o Dispositivo esteja aberto, ou clique no botão 'Desconectar' para obter um novo QR Code",
+              "Certifique-se de que seu celular esteja conectado à internet e o WhatsApp esteja aberto, ou clique no botão 'Desconectar' para obter um novo QR Code",
           },
         },
         table: {
@@ -102,8 +102,8 @@ const messages = {
       },
       whatsappModal: {
         title: {
-          add: "Adicionar Dispositivo",
-          edit: "Editar Dispositivo",
+          add: "Adicionar WhatsApp",
+          edit: "Editar WhatsApp",
         },
         form: {
           name: "Nome",
@@ -115,7 +115,7 @@ const messages = {
           okEdit: "Salvar",
           cancel: "Cancelar",
         },
-        success: "Dispositivo salvo com sucesso.",
+        success: "WhatsApp salvo com sucesso.",
       },
       qrCode: {
         message: "Leia o QrCode para iniciar a sessão",
@@ -139,7 +139,7 @@ const messages = {
         },
         table: {
           name: "Nome",
-          whatsapp: "Dispositivo",
+          whatsapp: "WhatsApp",
           email: "Email",
           actions: "Ações",
         },
@@ -184,8 +184,8 @@ const messages = {
       },
       queueModal: {
         title: {
-          add: "Adicionar setor",
-          edit: "Editar setor",
+          add: "Adicionar fila",
+          edit: "Editar fila",
         },
         form: {
           name: "Nome",
@@ -208,7 +208,6 @@ const messages = {
           email: "Email",
           password: "Senha",
           profile: "Perfil",
-          whatsapp: "Conexão Padrão",
         },
         buttons: {
           okAdd: "Adicionar",
@@ -226,7 +225,7 @@ const messages = {
         },
       },
       ticketsQueueSelect: {
-        placeholder: "Setores",
+        placeholder: "Filas",
       },
       tickets: {
         toasts: {
@@ -236,7 +235,7 @@ const messages = {
           message: "Mensagem de",
         },
         tabs: {
-          open: { title: "Em aberto" },
+          open: { title: "Inbox" },
           closed: { title: "Resolvidos" },
           search: { title: "Busca" },
         },
@@ -250,10 +249,6 @@ const messages = {
       transferTicketModal: {
         title: "Transferir Ticket",
         fieldLabel: "Digite para buscar usuários",
-        fieldQueueLabel: "Transferir para setor",
-        fieldConnectionLabel: "Transferir para conexão",
-        fieldQueuePlaceholder: "Selecione um setor",
-        fieldConnectionPlaceholder: "Selecione uma conexão",
         noOptions: "Nenhum usuário encontrado com esse nome",
         buttons: {
           ok: "Transferir",
@@ -269,7 +264,6 @@ const messages = {
         connectionTitle: "Conexão que está sendo utilizada atualmente.",
         buttons: {
           accept: "Aceitar",
-          view: "Espiar",
         },
       },
       newTicketModal: {
@@ -288,14 +282,12 @@ const messages = {
           tickets: "Tickets",
           contacts: "Contatos",
           quickAnswers: "Respostas Rápidas",
-          queues: "Setores",
+          queues: "Filas",
           administration: "Administração",
           users: "Usuários",
           settings: "Configurações",
-          ZDG: "Envio de Mensagem",
-          ZDGMedia: "Envio de Link",
-          ZDGMedia2: "Envio de Arquivo",
-          ZDGMedia3: "Envio de Áudio",
+          ZDG: "Envio Automático",
+          ZDGMedia: "Envio de Mídia",
           ZDGGroups: "Grupos",
           Direct: "Direct IG",
           SMS: "SMS",
@@ -316,7 +308,7 @@ const messages = {
         noTickets: "Nenhuma notificação.",
       },
       queues: {
-        title: "Setores",
+        title: "Filas",
         table: {
           name: "Nome",
           color: "Cor",
@@ -324,16 +316,16 @@ const messages = {
           actions: "Ações",
         },
         buttons: {
-          add: "Adicionar setor",
+          add: "Adicionar fila",
         },
         confirmationModal: {
           deleteTitle: "Excluir",
           deleteMessage:
-            "Você tem certeza? Essa ação não pode ser revertida! Os tickets desse setor continuarão existindo, mas não terão mais nenhum setor atribuído.",
+            "Você tem certeza? Essa ação não pode ser revertida! Os tickets dessa fila continuarão existindo, mas não terão mais nenhuma fila atribuída.",
         },
       },
       queueSelect: {
-        inputLabel: "Setores",
+        inputLabel: "Filas",
       },
       quickAnswers: {
         title: "Respostas Rápidas",
@@ -361,7 +353,6 @@ const messages = {
           name: "Nome",
           email: "Email",
           profile: "Perfil",
-          whatsapp: "Conexão Padrão",
           actions: "Ações",
         },
         buttons: {
@@ -373,7 +364,7 @@ const messages = {
         confirmationModal: {
           deleteTitle: "Excluir",
           deleteMessage:
-            "Todos os dados do usuário serão perdidos. Os tickets abertos deste usuário serão movidos para o setor.",
+            "Todos os dados do usuário serão perdidos. Os tickets abertos deste usuário serão movidos para a fila.",
         },
       },
       settings: {
@@ -385,37 +376,6 @@ const messages = {
             options: {
               enabled: "Ativado",
               disabled: "Desativado",
-            },
-          },
-          timeCreateNewTicket: {
-            name: "Mensagem de boas-vindas após",
-            note: "Selecione o tempo que será necessário para abrir um novo ticket, caso o cliente entre em contatos novamente",
-            options: {
-              "10": "10 Segundos",
-              "30": "30 Segundos",
-              "60": "1 minuto",
-              "300": "5 minutos",
-              "1800" : "30 minutos",
-              "3600" : "1 hora",
-              "7200" : "2 horas",
-              "21600" : "6 horas",
-              "43200" : "12 horas",
-              "86400" : "24 horas",
-              "172800" : "48 horas",
-            },
-          },  
-          call: {
-            name: "Aceitar chamadas",
-            options: {
-              enabled: "Ativado",
-              disabled: "Desativado",
-            },
-          },
-          CheckMsgIsGroup: {
-            name: "Ignorar Mensagens de Grupos",
-            options: {
-                enabled: "Ativado",
-                disabled: "Desativado",
             },
           },
         },
@@ -432,7 +392,7 @@ const messages = {
         },
       },
       messagesInput: {
-        placeholderOpen: "Digite uma mensagem ou tecle / para utilizar as respostas rápidas cadastradas.",
+        placeholderOpen: "Digite uma mensagem",
         placeholderClosed:
           "Reabra ou aceite esse ticket para enviar uma mensagem.",
         signMessage: "Assinar",
@@ -472,21 +432,21 @@ const messages = {
         },
       },
       backendErrors: {
-        ERR_NO_OTHER_WHATSAPP: "Deve haver pelo menos um Dispositivo padrão.",
+        ERR_NO_OTHER_WHATSAPP: "Deve haver pelo menos um WhatsApp padrão.",
         ERR_NO_DEF_WAPP_FOUND:
-          "Nenhum Dispositivo padrão encontrado. Verifique a página de conexões.",
+          "Nenhum WhatsApp padrão encontrado. Verifique a página de conexões.",
         ERR_WAPP_NOT_INITIALIZED:
-          "Esta sessão do Dispositivo não foi inicializada. Verifique a página de conexões.",
+          "Esta sessão do WhatsApp não foi inicializada. Verifique a página de conexões.",
         ERR_WAPP_CHECK_CONTACT:
-          "Não foi possível verificar o contato do Dispositivo. Verifique a página de conexões",
+          "Não foi possível verificar o contato do WhatsApp. Verifique a página de conexões",
         ERR_WAPP_INVALID_CONTACT: "Este não é um número de Whatsapp válido.",
         ERR_WAPP_DOWNLOAD_MEDIA:
-          "Não foi possível baixar mídia do Dispositivo. Verifique a página de conexões.",
+          "Não foi possível baixar mídia do WhatsApp. Verifique a página de conexões.",
         ERR_INVALID_CREDENTIALS:
           "Erro de autenticação. Por favor, tente novamente.",
         ERR_SENDING_WAPP_MSG:
-          "Erro ao enviar mensagem do Dispositivo. Verifique a página de conexões.",
-        ERR_DELETE_WAPP_MSG: "Não foi possível excluir a mensagem do Dispositivo.",
+          "Erro ao enviar mensagem do WhatsApp. Verifique a página de conexões.",
+        ERR_DELETE_WAPP_MSG: "Não foi possível excluir a mensagem do WhatsApp.",
         ERR_OTHER_OPEN_TICKET: "Já existe um tíquete aberto para este contato.",
         ERR_SESSION_EXPIRED: "Sessão expirada. Por favor entre.",
         ERR_USER_CREATION_DISABLED:
@@ -497,7 +457,7 @@ const messages = {
         ERR_NO_CONTACT_FOUND: "Nenhum contato encontrado com este ID.",
         ERR_NO_TICKET_FOUND: "Nenhum tíquete encontrado com este ID.",
         ERR_NO_USER_FOUND: "Nenhum usuário encontrado com este ID.",
-        ERR_NO_WAPP_FOUND: "Nenhum Dispositivo encontrado com este ID.",
+        ERR_NO_WAPP_FOUND: "Nenhum WhatsApp encontrado com este ID.",
         ERR_CREATING_MESSAGE: "Erro ao criar mensagem no banco de dados.",
         ERR_CREATING_TICKET: "Erro ao criar tíquete no banco de dados.",
         ERR_FETCH_WAPP_MSG:
@@ -505,7 +465,7 @@ const messages = {
         ERR_QUEUE_COLOR_ALREADY_EXISTS:
           "Esta cor já está em uso, escolha outra.",
         ERR_WAPP_GREETING_REQUIRED:
-          "A mensagem de saudação é obrigatório quando há mais de um setor.",
+          "A mensagem de saudação é obrigatório quando há mais de uma fila.",
       },
     },
   },

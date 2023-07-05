@@ -15,12 +15,6 @@ import { i18n } from "../../translate/i18n";
 import Chart from "./Chart"
 
 const useStyles = makeStyles(theme => ({
-	root: {
-		display: "flex",
-		alignItems: "center",
-		padding: theme.spacing(8, 8, 3),
-		backgroundColor: theme.palette.background.default
-	},
 	container: {
 		paddingTop: theme.spacing(4),
 		paddingBottom: theme.spacing(4),
@@ -70,7 +64,7 @@ const Dashboard = () => {
 	}
 
 	return (
-		<div className={classes.root}>
+		<div>
 			<Container maxWidth="lg" className={classes.container}>
 				<Grid container spacing={3}>
 					<Grid item xs={4}>
